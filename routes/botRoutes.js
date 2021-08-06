@@ -17,13 +17,23 @@ router.route("/messages").get(async (req, res) => {
 });
 
 router.route("/sadwords").get(async (req, res) => {
-  const allmsgs = await getSadWords();
-  return res.status(200).json(allmsgs);
+  const allwords = await getSadWords();
+  return res.status(200).json(allwords);
 });
+
 router.route("/responding").get(async (req, res) => {
-  const allmsgs = await getRespondingStatus();
-  return res.status(200).json(allmsgs);
+    try {
+        const status = await getRespondingStatus();
+        return res.status(200).json({ status: status, message: "value changed" });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: "Server is error",
+          });
+    }
+ 
 });
+
 router.route("/del/:id").delete(async (req, res) => {
   const id = req.params.id;
   await deleteMessage(id);

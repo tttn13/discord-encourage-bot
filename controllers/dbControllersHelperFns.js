@@ -8,9 +8,10 @@ exports.getRespondingStatus = async () => {
     const status = res.map((item) => item.value);
     return status[0];
   } catch (error) {
-    return res.status(500).send({
+    return {
+      error: error,
       message: "Server is error",
-    });
+    };
   }
 };
 
@@ -20,13 +21,13 @@ exports.getSadWords = async () => {
     const sadWordsList = allSadWords.map((item) => item.word);
     return sadWordsList;
   } catch (error) {
-    return res.status(500).send({
+    return {
       message: "Server is error",
-    });
+    };
   }
 };
 
-exports.getAllMessages = async (req, res) => {
+exports.getAllMessages = async () => {
   try {
     // const allMessages = await Message.findAll({ attributes: ["message"] });
     const allMessages = await Message.findAll();
@@ -36,9 +37,10 @@ exports.getAllMessages = async (req, res) => {
     }));
     return messageList;
   } catch (error) {
-    return res.status(500).send({
+    return {
+      error: error,
       message: "Server is error",
-    });
+    };
   }
 };
 
@@ -48,9 +50,10 @@ exports.changeResponding = async ({ value }) => {
     const foundid = res.map((item) => item.id)[0];
     await Responding.update({ value: value }, { where: { id: foundid } });
   } catch (error) {
-    return res.status(500).send({
+    return {
+      error: error,
       message: "Server is error",
-    });
+    };
   }
 };
 
@@ -61,9 +64,10 @@ exports.deleteMessage = async (id) => {
     const delMessage = await Message.destroy({ where: { messageId: id } });
     if (!delMessage) return msg.reply("That message id did not exist");
   } catch (error) {
-    return res.status(500).send({
+    return {
+      error: error,
       message: "Server is error",
-    });
+    };
   }
 };
 
@@ -94,4 +98,3 @@ exports.addWord = async (word) => {
     }
   }
 };
-
