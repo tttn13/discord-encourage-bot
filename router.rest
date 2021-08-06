@@ -1,0 +1,8 @@
+PUT http://localhost:5000/api/responding/1
+Content-Type: application/json
+
+{
+    "value": 1
+}
+
+###
