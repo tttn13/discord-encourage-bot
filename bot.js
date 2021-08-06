@@ -54,7 +54,7 @@ client.on("ready", () => {
   console.log(`Bot logged in as ${client.user.tag}!`);
   db.authenticate()
     .then(() => {
-      console.log("logged in to db");
+      console.log("logged in to database");
       Message.init(db);
       SadWord.init(db);
       Responding.init(db);
