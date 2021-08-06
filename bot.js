@@ -1,5 +1,6 @@
 require("dotenv").config();
 const db = require("./database/db");
+const keepAlive = require("./server")
 const Message = require("./models/Message");
 const SadWord = require("./models/SadWords");
 const Responding = require('./models/Responding')
@@ -143,4 +144,5 @@ client.on("message", async (msg) => {
   }
 });
 
+keepAlive()
 client.login(process.env.BOT_TOKEN);
