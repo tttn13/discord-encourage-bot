@@ -9,20 +9,17 @@ const {
   changeResponding,
   deleteMessage,
   addMessage,
-  addWord
+  addWord,
 } = require("./controllers/dbControllersHelperFns");
 
-const client = new Discord.Client({
-  partials: ["MESSAGE", "CHANNEL"],
-});
+const client = new Discord.Client();
 
 const API_URL = "https://zenquotes.io/api/random";
 const PREFIX = "$";
 
 const showEncouragingMsg = async (messageObject) => {
   const res = await getAllMessages();
-  const msgList = res.map(item => item.message)
-  console.log(msgList)
+  const msgList = res.map((item) => item.message);
   const encourageMessage = msgList[Math.floor(Math.random() * msgList.length)];
   return messageObject.reply(encourageMessage);
 };
@@ -48,7 +45,7 @@ client.on("message", async (msg) => {
   const status = await getRespondingStatus();
   const sadWordsList = await getSadWords();
   console.log("this is current status", status);
-  console.log('this is sad words', sadWordsList)
+  console.log("this is sad words", sadWordsList);
   const wordIsSad = sadWordsList.some((word) => msg.content.includes(word));
   if (wordIsSad && status) showEncouragingMsg(msg);
 
@@ -67,7 +64,7 @@ client.on("message", async (msg) => {
   if (msg.content.startsWith(newCommand)) {
     messageToSend = msg.content.slice(newCommand.length + 1);
     if (messageToSend.trim().length === 0) {
-      return msg.channel.send("Please add a message.")
+      return msg.channel.send("Please add a message.");
     } else {
       addMessage(messageToSend);
       return msg.channel.send("Added a message.");
@@ -78,8 +75,12 @@ client.on("message", async (msg) => {
   const newWordCommand = `${PREFIX}newWord`;
   if (msg.content.startsWith(newWordCommand)) {
     wordToSend = msg.content.slice(newWordCommand.length + 1);
-    addWord(wordToSend);
-    return msg.channel.send("Added a word.");
+    if (wordToSend.trim().length === 0) {
+      return msg.channel.send("Please add a word.");
+    } else {
+      addWord(wordToSend);
+      return msg.channel.send("Added a word.");
+    }
   }
 
   const delCommand = `${PREFIX}del`;

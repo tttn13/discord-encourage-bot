@@ -31,7 +31,6 @@ router.route("/responding").get(async (req, res) => {
             error: "Server is error",
           });
     }
- 
 });
 
 router.route("/del/:id").delete(async (req, res) => {

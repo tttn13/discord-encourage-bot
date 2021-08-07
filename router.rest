@@ -6,3 +6,4 @@ Content-Type: application/json
 }
 
 ###
+DELETE http://localhost:5000/del/205
