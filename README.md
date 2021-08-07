@@ -1,11 +1,10 @@
 # Discord Encourage Bot - MySQL 
-<img src='./assets/botDemo.gif'>
-This is a Discord Bot that fetches motivational quotes from the ZenQuotes API as responses to 'dispirited or sad' messages. The sole purpose of the bot is to motivate and cheer up the message sender ! The bot is developed using `Discord.js` module to allow interaction with the Discord API. This is a NodeJS project using Discord.js, Express, Sequelize with MySQL database. 
+<img src='./assets/botDemo.gif' width = "680" height= '500'>
+This is a Discord Bot that fetches motivational quotes from the ZenQuotes API as responses to 'dispirited or sad' messages. The sole purpose of the bot is to motivate and cheer up the message sender ! This is a NodeJS project using Discord.js module to allow interaction with the Discord API, Express, Sequelize with MySQL database. 
 
 ## Features
-
-After setting the bot application and creating the Discord server, create a `.env` file that holds the bot token and later on database host, database name, username, password.
-#### Listen for events
+After setting up the bot application and creating the Discord server, create a `.env` file that holds the bot token and later on database host, database name, username, password.
+### Listen for events
 First of all, the bot is listening to a **ready** event. The ready event is fired once the bot is connected :
 
 ~~~
@@ -15,7 +14,7 @@ client.on("ready", () => {
 });
 ~~~
 
-#### Create and handle user commands
+### Create and handle user commands
 Besides the ready event, the Discord client allows us to listen for a message event. This means the bot can read any message that is sent to a channel. 
 
 In this project, the commands for the bot are `$inspire`, `$list`, `$newMessage`, `$del`, `$newWord`, `$responding`.
@@ -67,7 +66,7 @@ Some other commands including
 - `$del`: delete an encouraging message using its ID from database.
 - `$newWord`: add a new sad word to the `sadwords` table.
 - `$responding`: turn on/off the responding functionality of the bot. Bot will go silent if the `responding` value is false.
-<img src='./assets/respondingOff.gif'>
+<img src='./assets/respondingOff.gif' width = "680" height= '500'>
 
 ### Deploy MySQL database on Heroku
  - After deploying the Node.js app to Heroku, I used `ClearDB` to configure MySQL Database connection for Node.js on Heroku app. 
@@ -93,7 +92,7 @@ Some other commands including
     app.listen(PORT, () => console.log(`server is running on port ${PORT}`));    
     ~~~
 
-#### Keep the bot alive
+### Keep the bot alive
 Because the app "powers down" after 30 mins of inactivity, I used [Kaffeine](http://kaffeine.herokuapp.com/) to ping it so the bot can start back up.
 
 ## Technologies 
