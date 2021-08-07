@@ -1,5 +1,5 @@
 # Discord Encourage Bot - MySQL 
-<img src='./assets/botDemo.gif' width = "680" height= '500'>
+<img src='./assets/botDemo.gif' width = "800" height= '500'>
 This is a Discord Bot that fetches motivational quotes from the ZenQuotes API as responses to 'dispirited or sad' messages. The sole purpose of the bot is to motivate and cheer up the message sender ! This is a NodeJS project using Discord.js module to allow interaction with the Discord API, Express, Sequelize with MySQL database. 
 
 ## Features
@@ -66,7 +66,7 @@ Some other commands including
 - `$del`: delete an encouraging message using its ID from database.
 - `$newWord`: add a new sad word to the `sadwords` table.
 - `$responding`: turn on/off the responding functionality of the bot. Bot will go silent if the `responding` value is false.
-<img src='./assets/respondingOff.gif' width = "680" height= '500'>
+<img src='./assets/respondingOff.gif' width = "800" height= '500'>
 
 ### Deploy MySQL database on Heroku
  - After deploying the Node.js app to Heroku, I used `ClearDB` to configure MySQL Database connection for Node.js on Heroku app. 
