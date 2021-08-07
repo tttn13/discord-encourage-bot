@@ -66,8 +66,12 @@ client.on("message", async (msg) => {
   const newCommand = `${PREFIX}newMessage`;
   if (msg.content.startsWith(newCommand)) {
     messageToSend = msg.content.slice(newCommand.length + 1);
-    addMessage(messageToSend);
-    return msg.channel.send("Added a message.");
+    if (messageToSend.trim().length === 0) {
+      return msg.channel.send("Please add a message.")
+    } else {
+      addMessage(messageToSend);
+      return msg.channel.send("Added a message.");
+    }
   }
 
   //if message starts with $newWord
